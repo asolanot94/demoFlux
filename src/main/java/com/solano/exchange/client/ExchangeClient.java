@@ -2,6 +2,7 @@ package com.solano.exchange.client;
 
 import com.solano.exchange.dto.ExchageResponseDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -17,8 +18,8 @@ public class ExchangeClient {
         this.webClient = webClient;
     }
 
-    public ExchangeClient(){
-        this.webClient = WebClient.create("https://v6.exchangerate-api.com/v6/1227cf5d13731ad6c251bc00/pair/");
+    public ExchangeClient(@Value("${exchange.service.url}") String url){
+        this.webClient = WebClient.create(url);
     }
 
     public Mono<ExchageResponseDto> getExchangeClient(String param){
