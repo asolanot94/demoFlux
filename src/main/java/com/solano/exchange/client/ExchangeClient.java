@@ -1,6 +1,7 @@
 package com.solano.exchange.client;
 
 import com.solano.exchange.dto.ExchageResponseDto;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,6 @@ import java.net.URI;
 @Slf4j
 public class ExchangeClient {
     private WebClient webClient;
-
-    public ExchangeClient(WebClient webClient) {
-        this.webClient = webClient;
-    }
 
     public ExchangeClient(@Value("${exchange.service.url}") String url){
         this.webClient = WebClient.create(url);

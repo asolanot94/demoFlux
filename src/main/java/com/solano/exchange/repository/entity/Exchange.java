@@ -1,27 +1,28 @@
 package com.solano.exchange.repository.entity;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "exchange", schema = "develop")
+@Table("exchange")
 public class Exchange {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "origin_currency")
+    @Column("origin_currency")
     private String originCurrency;
-    @Column(name = "final_currency")
+    @Column("final_currency")
     private String finalCurrency;
-    @Column(name = "date")
+    @Column("date")
     private String date;
-    @Column(name = "value")
+    @Column("value")
     private String value;
 }

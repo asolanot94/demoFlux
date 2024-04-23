@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  java_app:
+    container_name: java_app
+    image: exchange-java-app:1.0.0
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_R2DBC_URL=r2dbc:postgresql://java_db/postgres
+      - SPRING_R2DBC_USERNAME=postgres
+      - SPRING_R2DBC_PASSWORD=postgres
+    depends_on:
+      - java_db
+  java_db:
+    container_name: java_db
+    image: postgres:15.6
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres

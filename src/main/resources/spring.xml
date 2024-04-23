@@ -1,0 +1,6 @@
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <springProfile name="dev">
+        <logger name="org.hibernate" level="DEBUG"/>
+    </springProfile>
+</configuration>
